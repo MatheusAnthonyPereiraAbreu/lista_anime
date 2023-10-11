@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0px;
+}
+body{
+    font-family: arial, sans-serif 12pt;
+    background-color: rgba(35, 32, 202, 0.692);
+}
+header{
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    color: black;
+    background-color: #76149ce1;
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right:30px;
+    margin-bottom: 30px;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 10px 15px;
+}
+
+button{
+    border-radius: 10px;
+    text-align: center;
+    padding: 2px;
+}
+
+li{
+    text-align: center;
+    color: black;
+    font-size: 13pt;
+    background-color: rgba(69, 32, 202, 0.692);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right:30px;
+    margin-bottom: 30px;
+}
+#app{
+    text-align: center;
+    color: black;
+    font-size: 13pt;
+    background-color: rgb(209, 203, 203);
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right:30px;
+    margin-bottom: 30px;
+    box-shadow: 5px 15px 5px;
+}
+#tudo{
+    margin-top: 80px;
+    margin-left: 150px;
+    margin-right:150px;
+    margin-bottom: 80px;
+    padding-bottom: 40px;
+    padding-top: 10px;
+    border-radius: 20px;
+}
+#txt{
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+}
+#tit{
+    color: black;
+    background-color: rgb(209, 203, 203);
+    border-radius: 20px;
+    text-align: center;
+    margin:50px;
+    padding-top: 10px;
+    padding: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 20px;
+    box-shadow: 5px 15px 5px;
+}
