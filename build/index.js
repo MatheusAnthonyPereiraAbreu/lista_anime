@@ -1,20 +1,24 @@
 "use strict";
-let listElement = document.querySelector("#app ul");
-let inputElementNome = document.querySelector("#nome");
-let inputElementDescricao = document.querySelector("#descricao input");
-let inputElementAutor = document.querySelector("#autor input");
-let inputElementAno = document.querySelector("#ano input");
-let buttonElementAdicionar = document.querySelector("#aciona");
+let listElement = document.getElementById("lista");
+let inputElementNome = document.getElementById("nome");
+let inputElementDescricao = document.getElementById("descricao");
+let inputElementAutor = document.getElementById("autor");
+let inputElementAno = document.getElementById("ano");
+let buttonElementAdicionar = document.getElementById("aciona");
 let detalhesAnimeDiv = document.getElementById("detalhesAnime");
-let form = document.querySelector("form");
 let animesSalvos = localStorage.getItem("@listagem_animes");
 let animes = animesSalvos !== null && JSON.parse(animesSalvos) || [];
+function deletarAnime(posicao) {
+    animes.splice(posicao, 1);
+    detalhesAnimeDiv.innerHTML = "";
+    listarAnime();
+    salvarDados();
+}
 function listarAnime() {
-    animes.forEach((item, posicao) => {
-        listElement.innerHTML = "";
+    listElement.innerHTML = "";
+    animes.map((item, posicao) => {
         let todoElement = document.createElement("li");
-        let animeText = document.createTextNode("span");
-        animeText.textContent = `${item.nome}`;
+        let animeText = document.createTextNode(item.nome);
         let linkElementDelete = document.createElement("button");
         let linkElementView = document.createElement("button");
         linkElementDelete.innerText = "Excluir";
@@ -30,10 +34,8 @@ function listarAnime() {
     });
 }
 function adicionarAnime() {
-    console.log("entro");
-    if (inputElementNome == null || inputElementNome.value === "" || inputElementAutor == null || inputElementAutor.value === "" || inputElementAno == null || inputElementAno.value === "" || inputElementDescricao == null || inputElementDescricao.value === "") {
+    if (inputElementNome.value.length <= 0 || inputElementDescricao.value.length <= 0 || inputElementAutor.value.length <= 0 || inputElementAno.value.length <= 0) {
         alert("Digite todas as informaões do anime!");
-        console.log(inputElementNome.value);
         return;
     }
     let NomeAnime = inputElementNome.value;
@@ -42,26 +44,21 @@ function adicionarAnime() {
     let AnoAnime = inputElementAno.value;
     let novoAnime = { nome: NomeAnime, autor: AutorAnime, descricao: DescricaoAnime, ano: AnoAnime };
     animes.push(novoAnime);
-    inputElementNome.value = " ";
-    inputElementAutor.value = " ";
-    inputElementDescricao.value = " ";
-    inputElementAno.value = " ";
+    inputElementNome.value = "";
+    inputElementAutor.value = "";
+    inputElementDescricao.value = "";
+    inputElementAno.value = "";
     listarAnime();
     salvarDados();
 }
 buttonElementAdicionar.onclick = adicionarAnime;
-function deletarAnime(posicao) {
-    animes.splice(posicao, 1);
-    listarAnime();
-    salvarDados();
-}
 function mostrarAnime(posicao) {
     detalhesAnimeDiv.innerHTML = ""; // Limpa qualquer conteúdo anterior
     const anime = animes[posicao];
-    let NomeAnime = document.createElement("a");
-    let AutorAnime = document.createElement("a");
-    let DescricaoAnime = document.createElement("a");
-    let AnoAnime = document.createElement("a");
+    let NomeAnime = document.createElement("li");
+    let AutorAnime = document.createElement("li");
+    let DescricaoAnime = document.createElement("li");
+    let AnoAnime = document.createElement("li");
     NomeAnime.textContent = anime.nome;
     AutorAnime.textContent = anime.autor;
     DescricaoAnime.textContent = anime.descricao;
